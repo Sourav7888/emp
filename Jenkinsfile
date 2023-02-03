@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('cloning file from repo') {
             steps {
-                echo 'Hello World'
+                git'https://github.com/Sourav7888/emp/Jenkinsfile'
             }
         }
     }

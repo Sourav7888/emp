@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Copy file via SSH password
-        uses: appleboy/scp-action@v0.4.0
+        uses: appleboy/rsync-action@v1.0.1
         with:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_REMOTE_USERNAME }}

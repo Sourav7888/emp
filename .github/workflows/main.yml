@@ -21,5 +21,6 @@ jobs:
           password: Password@123
           port: 22
           script: |
-            cd /var/www/html
+            cd /var/www/html/abc 
+            touch gitrr
             git pull origin master

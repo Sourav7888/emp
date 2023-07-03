@@ -1,19 +1,20 @@
 name: scp files
-on: [push]
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: copy file via ssh password
-      uses: appleboy/scp-action@v0.1.4
+      - uses: actions/checkout@v3
 
-      with:
-
-        host: ${{ secrets.VM_HOST }}
-        username: ${{ secrets.VM_REMOTE_USERNAME}}
-        password: ${{ secrets.VM_PASSWORD }}
-        port: ${{ secrets.VM_PORT }}
-     
+      - name: Copy file via SSH password
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_REMOTE_USERNAME }}
+          password: ${{ secrets.VM_PASSWORD }}
+          port: ${{ secrets.VM_PORT }}

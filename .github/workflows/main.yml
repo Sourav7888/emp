@@ -3,26 +3,22 @@ name: scp files
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
     name: Copy file via SSH
     runs-on: ubuntu-latest
     steps:
-      - name: Copy files via SSH
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: 4.236.144.47
-          username: vivek
-          password: Password@123
-          port: 22
-          timeout: 1000s
-          source: ./*
-          target: /var/www/html/
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: SSH into the server
-        uses: appleboy/ssh-action@v0.4.0
+      - name: Copy files via SCP
+        run: |
+          scp -r ./* vivek@4.236.144.47:/var/www/html/
+
+      - name: SSH into the server and update repository
+        uses: appleboy/ssh-action@v0.1.4
         with:
           host: 4.236.144.47
           username: vivek

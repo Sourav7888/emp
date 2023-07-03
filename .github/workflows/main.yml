@@ -18,3 +18,5 @@ jobs:
           username: ${{ secrets.VM_REMOTE_USERNAME }}
           password: ${{ secrets.VM_PASSWORD }}
           port: ${{ secrets.VM_PORT }}
+          source: .
+          target: /home/vivek/test

@@ -1,20 +1,17 @@
-name: master
-on:
-  push:
-    branches:
-      - master
-
+name: scp files
+on: [push]
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Copy file via SSH password
-        uses: appleboy/ssh-action@v0.1.10
-        with:
-          host: ${{ secrets.VM_HOST }}
-          username: ${{ secrets.VM_REMOTE_USERNAME }}
-          password: ${{ secrets.VM_PASSWORD }}
-          port: ${{ secrets.VM_PORT }}
+build:
+  name: copy file via ssh
+  runs-on: ubuntu-latest
+  steps:
+  - uses: appleboy/scp-action@v0.1.4
+    with:
+     host: 4.236.144.47
+     username: vivek
+     password: Password@123
+     port: 22
+     timeout: 1000s
+     script: |
+            cd /var/www/html
+            git pull origin main

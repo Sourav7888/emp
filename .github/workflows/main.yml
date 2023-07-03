@@ -21,5 +21,5 @@ jobs:
           password: Password@123
           port: 22
           script: |
-            cd /home/vivek
+            cd /home/vivek/aa
             git clone https://github.com/Sourav7888/emp.git

@@ -13,9 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install SSH client
-        run: sudo apt-get install -y openssh-client
-
       - name: SSH into VM and deploy
         uses: appleboy/ssh-action@v0.4.0
         with:

@@ -13,10 +13,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Copy files via SCP
-        run: |
-          scp -r ./* vivek@4.236.144.47:/var/www/html/
-
       - name: SSH into the server and update repository
         uses: appleboy/ssh-action@v0.1.4
         with:

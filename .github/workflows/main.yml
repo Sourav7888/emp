@@ -21,6 +21,5 @@ jobs:
           password: Password@123
           port: 22
           script: |
-            cd /var/www/html
-            sudo su -p Password@123
+            cd /home/vivek
             git clone https://github.com/Sourav7888/emp.git

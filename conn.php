@@ -1,6 +1,6 @@
 <?php
 
-$conn=mysqli_connect('ultimate2.mysdfdsfsql.database.azure.com','scot','Password@wqdqwd123','test');
+$conn=mysqli_connect('ultimate2.mysql.database.azure.com','scot','Password@wqdqwd123','test');
 
 
 ?>

@@ -1,15 +1,19 @@
-name: Deploy to VM
-
-on:
-  push:
-    branches:
-      - master
-
+name: scp files
+on: [push]
 jobs:
-  deploy:
+  build:
+    name: Build
     runs-on: ubuntu-latest
-
     steps:
-      - name: SSH into VM and deploy
-        run: |
-          sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no -p "${{ secrets.VM_PORT }}" ${{ secrets.VM_REMOTE_USERNAME }}@${{ secrets.VM_HOST }} "cd /var/www/html && git pull origin master"
+    - uses: actions/checkout@v3
+    
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@v0.1.4
+
+      with:
+
+        host: ${{ secrets.VM_HOST }}
+        username: ${{ secrets.VM_REMOTE_USERNAME}}
+        password: ${{ secrets.VM_PASSWORD }}
+        port: ${{ secrets.VM_PORT }}
+     

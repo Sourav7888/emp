@@ -10,13 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
       - name: SSH into VM and deploy
         run: |
-          sshpass -p ${{ secrets.VM_PASSWORD }} ssh -o StrictHostKeyChecking=no -p ${{ secrets.VM_PORT }} ${{ secrets.VM_REMOTE_USERNAME }}@${{ secrets.VM_HOST }} << 'EOF'
-          cd /var/www/html
-          git pull origin master
-          # Add any additional deployment commands here
-          EOF
+          sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.VM_PORT }} ${{ secrets.VM_REMOTE_USERNAME }}@${{ secrets.VM_HOST }} "cd /var/www/html && git pull origin master"
